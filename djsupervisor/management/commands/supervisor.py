@@ -292,7 +292,7 @@ class Command(BaseCommand):
         arguments, so we need to read it out of the merged config.
         """
         cfg = RawConfigParser()
-        cfg.readfp(cfg_file)
+        cfg.read_file(cfg_file)
         reload_progs = []
         for section in cfg.sections():
             if section.startswith("program:"):

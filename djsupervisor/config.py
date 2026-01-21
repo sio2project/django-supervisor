@@ -60,13 +60,13 @@ def get_merged_config(**options):
     cfg = RawConfigParser()
     #  Start from the default configuration options.
     data = render_config(DEFAULT_CONFIG,ctx)
-    cfg.readfp(StringIO(data))
+    cfg.read_file(StringIO(data))
     #  Add in the project-specific config file.
     with open(config_file,"r") as f:
         data = render_config(f.read(),ctx)
-    cfg.readfp(StringIO(data))
+    cfg.read_file(StringIO(data))
     #  Add in the options specified on the command-line.
-    cfg.readfp(StringIO(get_config_from_options(**options)))
+    cfg.read_file(StringIO(get_config_from_options(**options)))
     #  Add options from [program:__defaults__] to each program section
     #  if it happens to be missing that option.
     PROG_DEFAULTS = "program:__defaults__"
